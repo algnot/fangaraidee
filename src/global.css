@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Mali:wght@400&display=swap');
+
+* {
+  transition: .3s;
+}
+
+.theme-dark {
+  --light-text: #F9F8F8;  
+  --dark-background: #2F4550;
+  --hover: #273e49;
+  --body-background: #34444e;
+}
+
+.theme-light {
+  --light-text: #2F4550;
+  --dark-background: #F9F8F8;
+  --hover: #fce8e8;
+  --body-background: #eeeeee;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Mali', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--body-background);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+

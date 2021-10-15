@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Loading from './component/Loading/Loading'
+import { keepTheme } from './theme/theme'
+import { useEffect, useState } from 'react'
+import Navbar from './component/Navbar/Navbar'
+import styles from './App.module.css'
 
 function App() {
+  const [loading,setLoading] = useState(true)
+  
+  useEffect(() => {
+    setInterval(() => {
+      setLoading(false)
+    },2000)
+    keepTheme();
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.container}>
+      { loading && <Loading/> }
+      <div className={styles.navbar}>
+        <Navbar/>
+      </div>
+
+      <div>
+        feagrg
+      </div>
     </div>
   );
 }
