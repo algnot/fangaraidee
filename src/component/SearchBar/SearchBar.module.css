@@ -1,0 +1,78 @@
+input {
+  padding: 8px 15px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  background: var(--input-background);
+  color: var(--light-text);
+  font-family: "Mali", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 16px;
+  width: fit-content;
+}
+
+.searchRoom {
+  display: flex;
+  width: fit-content;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.searchIcon {
+  background: var(--input-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  cursor: pointer;
+  color: var(--light-text);
+}
+
+.mainMenu{
+  margin: 30px 60px;
+}
+
+.searchBar{
+  display: flex;
+  gap: 20px;
+}
+
+.createRoomBtn{
+  background: var(--background-btn);
+  color: var(--text-btn);
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.createRoomBtn:hover{
+    background: var(--background-hover-btn);
+}
+
+.joinRoom{
+  margin: 20px 40px;
+}
+
+@media only screen and (max-width: 1400px){
+  .joinRoom{
+    margin: 20px;
+  }
+}
+
+@media only screen and (max-width: 1200px){
+  .mobileHide{
+    display: none;
+  }
+}
+  

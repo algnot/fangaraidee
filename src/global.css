@@ -4,11 +4,20 @@
   transition: .3s;
 }
 
+a{
+  text-decoration: none;
+}
+
 .theme-dark {
   --light-text: #F9F8F8;  
   --dark-background: #2F4550;
   --hover: #273e49;
   --body-background: #34444e;
+  --input-background: #27333a;
+  --text-btn: #334756;
+  --background-btn: #F0A500;
+  --background-hover-btn: #e69d00;
+  --scollbar: #2F4550;
 }
 
 .theme-light {
@@ -16,6 +25,26 @@
   --dark-background: #F9F8F8;
   --hover: #fce8e8;
   --body-background: #eeeeee;
+  --input-background: #fff;
+  --text-btn: #ffb922;
+  --background-btn: #405661;
+  --background-hover-btn: #2F4550;
+  --scollbar: #2F4550;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:  var(--light-text);
+  opacity: 0.6; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:  var(--light-text);
+  opacity: 0.6;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color:  var(--light-text);
+  opacity: 0.6;
 }
 
 body {
@@ -34,3 +63,30 @@ code {
     monospace;
 }
 
+input{
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(105, 105, 105); 
+}
