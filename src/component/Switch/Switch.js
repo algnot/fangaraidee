@@ -6,7 +6,7 @@ function ToggleSwitch() {
   const [isToggled, setIsToggled] = useState(false);
 
   useEffect(() => {
-    if (getTheme == "theme-dark") {
+    if (getTheme() == "theme-dark") {
       setIsToggled(false);
     } else {
       setIsToggled(true);
