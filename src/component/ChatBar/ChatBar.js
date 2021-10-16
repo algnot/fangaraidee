@@ -1,7 +1,9 @@
 import React , {useState} from "react";
 import styles from "./ChatBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle, faComment, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle, 
+         faComment, 
+         faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function ChatBar({ name, id }) {
 
