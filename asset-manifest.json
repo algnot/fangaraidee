@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/fangaraidee/static/css/main.7097707c.chunk.css",
-    "main.js": "/fangaraidee/static/js/main.90b5ae6a.chunk.js",
-    "main.js.map": "/fangaraidee/static/js/main.90b5ae6a.chunk.js.map",
+    "main.css": "/fangaraidee/static/css/main.d86a8c21.chunk.css",
+    "main.js": "/fangaraidee/static/js/main.23b9d7a6.chunk.js",
+    "main.js.map": "/fangaraidee/static/js/main.23b9d7a6.chunk.js.map",
     "runtime-main.js": "/fangaraidee/static/js/runtime-main.1e37777c.js",
     "runtime-main.js.map": "/fangaraidee/static/js/runtime-main.1e37777c.js.map",
     "static/js/2.65e8b94f.chunk.js": "/fangaraidee/static/js/2.65e8b94f.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.19f11e81.chunk.js": "/fangaraidee/static/js/3.19f11e81.chunk.js",
     "static/js/3.19f11e81.chunk.js.map": "/fangaraidee/static/js/3.19f11e81.chunk.js.map",
     "index.html": "/fangaraidee/index.html",
-    "static/css/main.7097707c.chunk.css.map": "/fangaraidee/static/css/main.7097707c.chunk.css.map",
+    "static/css/main.d86a8c21.chunk.css.map": "/fangaraidee/static/css/main.d86a8c21.chunk.css.map",
     "static/js/2.65e8b94f.chunk.js.LICENSE.txt": "/fangaraidee/static/js/2.65e8b94f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.1e37777c.js",
     "static/js/2.65e8b94f.chunk.js",
-    "static/css/main.7097707c.chunk.css",
-    "static/js/main.90b5ae6a.chunk.js"
+    "static/css/main.d86a8c21.chunk.css",
+    "static/js/main.23b9d7a6.chunk.js"
   ]
 }
