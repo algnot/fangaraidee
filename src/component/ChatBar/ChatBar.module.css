@@ -106,7 +106,7 @@
 }
 
 .containerMobileShow{
-    animation: fade 1s ease 0s  normal none;
+    transform: translate(0 , 0);
 }
 
 .headerBack{
