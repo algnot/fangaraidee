@@ -8,7 +8,7 @@ import Login from "./component/Login/Login";
 import Home from "./component/Home/Home";
 
 function App() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setInterval(() => {
