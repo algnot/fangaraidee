@@ -141,7 +141,8 @@
 
     .container{
         width: calc(100vw - 50px);
-        height: calc(100vh - 30px);
+        height: calc(100vh - 65px);
+        padding-bottom: 50px;
         z-index: 1;
         top: 0;
     }
