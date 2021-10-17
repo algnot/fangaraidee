@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,9 +9,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Switch from "../Switch/Switch";
 import { Link } from "react-router-dom";
+import Login from './../Login/Login';
 
 export default function Navbar() {
+
+  const [loginState,setLoginState] = useState(false);
+
+  const displayLogin = () => {
+    setLoginState(!loginState);
+  }
+
   return (
+    <>
+      {
+        loginState && <Login display={displayLogin}/>
+      }
       <div className={styles.container}>
         <div className={styles.Logo}>fangAraiDee</div>
         <div className={styles.containerLink}>
@@ -39,22 +51,25 @@ export default function Navbar() {
               <div className={styles.navLinkText}>Random</div>
             </div>
           </Link>
-          <Link to="/login">
-            <div className={styles.navLinkHide}>
-              <div className={styles.navLinkIcon}>
-                <FontAwesomeIcon icon={faSignInAlt} />
-              </div>
-              <div className={styles.navLinkText}>Login</div>
+
+          <div className={styles.navLinkHide}
+               onClick={displayLogin}>
+            <div className={styles.navLinkIcon}>
+              <FontAwesomeIcon icon={faSignInAlt} />
             </div>
-          </Link>
+            <div className={styles.navLinkText}>Login</div>
+          </div>
+
           <div className={styles.switch}>
             <div className={styles.userLoginMobile}>
               <FontAwesomeIcon icon={faSignInAlt} />
               Login
             </div>
-            <Switch />
+            <Switch/>
           </div>
+
         </div>
       </div>
+    </>
   );
 }

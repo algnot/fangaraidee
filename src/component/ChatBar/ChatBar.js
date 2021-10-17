@@ -36,7 +36,7 @@ export default function ChatBar({ name, id }) {
           <div className={styles.chat}>
             <div className={styles.chatName}>algnot</div>
             <div className={styles.message}>Hello world</div>
-          </div>
+          </div> 
           <div className={styles.chat}>
             <div className={styles.chatName}>algnot</div>
             <div className={styles.message}>Hello world</div>

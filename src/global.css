@@ -8,18 +8,6 @@ a{
   text-decoration: none;
 }
 
-:root{
-  --light-text: #F9F8F8;  
-  --dark-background: #2F4550;
-  --hover: #273e49;
-  --body-background: #34444e;
-  --input-background: #27333a;
-  --text-btn: #334756;
-  --background-btn: #F0A500;
-  --background-hover-btn: #e69d00;
-  --scollbar: #2F4550;
-}
-
 .theme-dark {
   --light-text: #F9F8F8;  
   --dark-background: #2F4550;
@@ -30,6 +18,9 @@ a{
   --background-btn: #F0A500;
   --background-hover-btn: #e69d00;
   --scollbar: #2F4550;
+  --background-btn-login: #34444e;
+  --background-btn-login-hover: #2f3e47;
+  --background-login: #ffffff20;
 }
 
 .theme-light {
@@ -42,6 +33,9 @@ a{
   --background-btn: #405661;
   --background-hover-btn: #2F4550;
   --scollbar: #2F4550;
+  --background-btn-login: #eeeeee;
+  --background-btn-login-hover: #dddddd;
+  --background-login: #00000034;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

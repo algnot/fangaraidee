@@ -114,6 +114,8 @@
     cursor: pointer;
 }
 
+
+
 @keyframes fade {
     0.0%{
         transform: translate(100vw , 0);
