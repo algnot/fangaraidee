@@ -7,13 +7,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./component/Home/Home";
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    setInterval(() => {
-      setLoading(false);
-    }, 2000);
-    keepTheme();
+  useEffect(async () => {
+    await keepTheme();
   });
 
   return (
@@ -26,7 +23,7 @@ function App() {
 
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home setLoading={setLoading} />
           </Route>
         </Switch>
         
