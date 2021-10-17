@@ -79,7 +79,11 @@ input {
 
 @media only screen and (max-width: 330px){
   .joinRoom{
-    margin: 10px 5px;
+    margin: 10px 10px;
+  }
+
+  .searchBar{
+    gap: 10px;
   }
 }
   
