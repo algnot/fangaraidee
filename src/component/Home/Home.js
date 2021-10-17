@@ -12,7 +12,7 @@ export default function Home() {
 
       <div className={styles.globalChat}>
         <ChatBar name="Global Chat"
-                 id="999999999"/>
+                 id="mTdG3yuGbp2GBUNMggMg"/>
       </div>
     </div>
   );

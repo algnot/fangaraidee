@@ -1,29 +1,51 @@
 import React , { useEffect } from 'react'
 import styles from './Login.module.css'
-import { googleProvider , auth , facebookProvider } from './../../firebase/firebase'
+import { googleProvider , auth , facebookProvider, firestore } from './../../firebase/firebase'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function Login({display}) {
 
-    const googleLogin = () => {
-        auth.signInWithPopup(googleProvider)
-        .then((user) => {
-
-        })
-        .catch((e) => {
-
-        })
+    const googleLogin = async () => {
+        const result = await auth.signInWithPopup(googleProvider);
+        if(result) {
+            const userRef = firestore.collection('users')
+            .doc(result.user.uid)
+            userRef.get().then((doc) => {
+                if(!doc.data()){
+                    userRef.set({
+                        uid: result.user.uid,
+                        displayName: result.user.displayName,
+                        photoURL: result.user.photoURL,
+                        email: result.user.email,
+                        created: new Date().valueOf(),
+                        role: 'user',
+                        provider: 'google'
+                    })
+                }
+            })
+        }
     }
 
-    const facebookLogin = () => {
-        auth.signInWithPopup(facebookProvider)
-        .then((user) => {
-
-        })
-        .catch((e) => {
-
-        })
+    const facebookLogin = async () => {
+        const result = await auth.signInWithPopup(facebookProvider);
+        if(result) {
+            const userRef = firestore.collection('users')
+            .doc(result.user.uid)
+            userRef.get().then((doc) => {
+                if(!doc.data()){
+                    userRef.set({
+                        uid: result.user.uid,
+                        displayName: result.user.displayName,
+                        photoURL: result.user.photoURL,
+                        email: result.user.email,
+                        created: new Date().valueOf(),
+                        role: 'user',
+                        provider: 'facebook'
+                    })
+                }
+            })
+        }
     }
 
     return (

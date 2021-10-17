@@ -61,7 +61,8 @@ export default function Navbar() {
           </div>
 
           <div className={styles.switch}>
-            <div className={styles.userLoginMobile}>
+            <div className={styles.userLoginMobile}
+                 onClick={displayLogin}>
               <FontAwesomeIcon icon={faSignInAlt} />
               Login
             </div>

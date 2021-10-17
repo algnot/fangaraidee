@@ -1,25 +1,79 @@
-import React , {useState} from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ChatBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle, 
-         faComment, 
-         faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faInfoCircle,
+  faComment,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
+import { auth, firestore } from "./../../firebase/firebase";
 
 export default function ChatBar({ name, id }) {
+  const [state, setstate] = useState(false);
+  const [chat, setChat] = useState([]);
+  const [message,setMessage] = useState('');
+  const [userName, setUserName] = useState('guest' + Math.floor(Math.random()*9999));
 
-  const [state, setstate] = useState(false)
+  useEffect(() => {
+    const sessionRef = firestore.collection("session").doc(id);
+    const chatRef = sessionRef.collection("chat");
+    const query = chatRef.orderBy("time", "asc").limit(16);
+    query.get().then((docs) => {
+      let tempList = []
+      docs.forEach((doc) => {
+        if(doc.id != 'lastMessage')
+          tempList = [...tempList,doc.data()]
+      })
+      setChat(tempList)
+    })
+
+    chatRef.doc('lastMessage').onSnapshot((doc) => {
+      query.get().then((docs) => {
+        let tempList = []
+        docs.forEach((doc) => {
+          if(doc.id != 'lastMessage')
+            tempList = [...tempList,doc.data()]
+        })
+        setChat(tempList)
+      })
+    })
+
+    auth.onAuthStateChanged((user) => {
+      firestore.collection('users').doc(user.uid)
+      .get().then((data) => {
+        setUserName(data.data().displayName.split(" ")[0])
+      })
+    })
+  }, []);
+
+  const sendMessage = () => {
+    let temp = {
+      'name' : userName,
+      'message' : message,
+      'time' : new Date().valueOf()
+    }
+    setChat([...chat , temp])
+    setMessage('')
+    const sessionRef = firestore.collection("session").doc(id)
+    const chatRef = sessionRef.collection("chat")
+    chatRef.add(temp).then( _ => {
+      chatRef.doc('lastMessage').set(temp)
+    })
+  }
 
   return (
     <>
-      <div className={styles.chatIcon}
-           onClick={() => setstate(true)}>
+      <div className={styles.chatIcon} onClick={() => setstate(true)}>
         <FontAwesomeIcon icon={faComment} />
       </div>
 
-      <div className={`${styles.container} ${state ? styles.containerMobileShow: styles.containerMobileHide}`}>
+      <div
+        className={`${styles.container} ${
+          state ? styles.containerMobileShow : styles.containerMobileHide
+        }`}
+      >
         <div className={styles.header}>
-          <div className={styles.headerBack}
-               onClick={() => setstate(false)}>
+          <div className={styles.headerBack} onClick={() => setstate(false)}>
             <FontAwesomeIcon icon={faChevronLeft} />
           </div>
           <div className={styles.headerName}>{name}</div>
@@ -29,22 +83,22 @@ export default function ChatBar({ name, id }) {
         </div>
 
         <div className={styles.chatContent}>
-          <div className={styles.chat}>
-            <div className={styles.chatName}>algnot</div>
-            <div className={styles.message}>Hello world</div>
-          </div>
-          <div className={styles.chat}>
-            <div className={styles.chatName}>algnot</div>
-            <div className={styles.message}>Hello world</div>
-          </div> 
-          <div className={styles.chat}>
-            <div className={styles.chatName}>algnot</div>
-            <div className={styles.message}>Hello world</div>
-          </div>
+          {chat.map((value, index) => {
+            return (
+              <div className={styles.chat} key={index}>
+                <div className={styles.chatName}>{value.name}</div>
+                <div className={styles.message}>{value.message}</div>
+              </div>
+            );
+          })}
         </div>
+
         <div className={styles.input}>
-          <input placeholder="send some message.." />
-          <div className={styles.btn}>send</div>
+          <input placeholder="send some message.." 
+                 value={message}
+                 onChange={(e) => setMessage(e.target.value)}/>
+          <div className={styles.btn}
+               onClick={sendMessage}>send</div>
         </div>
       </div>
     </>
