@@ -17,7 +17,7 @@ export default function ChatBar({ name, id }) {
   useEffect(() => {
     const sessionRef = firestore.collection("session").doc(id);
     const chatRef = sessionRef.collection("chat");
-    const query = chatRef.orderBy("time", "asc").limit(16);
+    const query = chatRef.orderBy("time", "desc").limit(16);
     query.get().then((docs) => {
       let tempList = []
       docs.forEach((doc) => {
@@ -47,18 +47,25 @@ export default function ChatBar({ name, id }) {
   }, []);
 
   const sendMessage = () => {
+    if(message == '') return;
     let temp = {
       'name' : userName,
       'message' : message,
       'time' : new Date().valueOf()
     }
-    setChat([...chat , temp])
+    setChat([temp , ...chat])
     setMessage('')
     const sessionRef = firestore.collection("session").doc(id)
     const chatRef = sessionRef.collection("chat")
     chatRef.add(temp).then( _ => {
       chatRef.doc('lastMessage').set(temp)
     })
+  }
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      sendMessage()
+    }
   }
 
   return (
@@ -96,6 +103,7 @@ export default function ChatBar({ name, id }) {
         <div className={styles.input}>
           <input placeholder="send some message.." 
                  value={message}
+                 onKeyDown={handleKeyDown}
                  onChange={(e) => setMessage(e.target.value)}/>
           <div className={styles.btn}
                onClick={sendMessage}>send</div>

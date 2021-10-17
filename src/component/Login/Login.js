@@ -7,7 +7,10 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 export default function Login({display}) {
 
     const googleLogin = async () => {
-        const result = await auth.signInWithPopup(googleProvider);
+        const result = await auth.signInWithPopup(googleProvider)
+        .then( _ => {
+            display()
+        })
         if(result) {
             const userRef = firestore.collection('users')
             .doc(result.user.uid)
