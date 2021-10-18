@@ -31,16 +31,15 @@ export default function Navbar() {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if(user) {
-        firestore
-        .collection("users")
-        .doc(user.uid)
-        .get()
-        .then((data) => {
-          setUserName(data.data().displayName.split(" ")[0]);
-          setUserInfo(data.data())
-        });
+        firestore.collection("users").doc(user.uid)
+        .onSnapshot(data => {
+          if(data.data()){
+            setUserName(data.data().displayName.split(" ")[0]);
+            setUserInfo(data.data())
+          } 
+        })
       }
-    });
+    })
   }, []);
 
   return (

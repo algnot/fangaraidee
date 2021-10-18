@@ -1,4 +1,4 @@
-import React , { useEffect } from 'react'
+import React from 'react'
 import styles from './Login.module.css'
 import { googleProvider , auth , facebookProvider, firestore } from './../../firebase/firebase'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,48 +7,51 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 export default function Login({display}) {
 
     const googleLogin = async () => {
-        const result = await auth.signInWithPopup(googleProvider)
-        .then( _ => {
-            display()
+        await auth.signInWithPopup(googleProvider)
+        .then((result) => {
+            console.log(result);
+            if(result) {
+                const userRef = firestore.collection('users')
+                .doc(result.user.uid)
+                userRef.get().then((doc) => {
+                    if(!doc.data()){
+                        userRef.set({
+                            uid: result.user.uid,
+                            displayName: result.user.displayName,
+                            photoURL: result.user.photoURL,
+                            email: result.user.email,
+                            created: new Date().valueOf(),
+                            role: 'user',
+                            provider: 'google'
+                        })
+                    }
+                })
+            }
         })
-        if(result) {
-            const userRef = firestore.collection('users')
-            .doc(result.user.uid)
-            userRef.get().then((doc) => {
-                if(!doc.data()){
-                    userRef.set({
-                        uid: result.user.uid,
-                        displayName: result.user.displayName,
-                        photoURL: result.user.photoURL,
-                        email: result.user.email,
-                        created: new Date().valueOf(),
-                        role: 'user',
-                        provider: 'google'
-                    })
-                }
-            })
-        }
     }
 
     const facebookLogin = async () => {
-        const result = await auth.signInWithPopup(facebookProvider);
-        if(result) {
-            const userRef = firestore.collection('users')
-            .doc(result.user.uid)
-            userRef.get().then((doc) => {
-                if(!doc.data()){
-                    userRef.set({
-                        uid: result.user.uid,
-                        displayName: result.user.displayName,
-                        photoURL: result.user.photoURL,
-                        email: result.user.email,
-                        created: new Date().valueOf(),
-                        role: 'user',
-                        provider: 'facebook'
-                    })
-                }
-            })
-        }
+        await auth.signInWithPopup(facebookProvider)
+        .then( result => {
+            console.log(result);
+            if(result) {
+                const userRef = firestore.collection('users')
+                .doc(result.user.uid)
+                userRef.get().then((doc) => {
+                    if(!doc.data()){
+                        userRef.set({
+                            uid: result.user.uid,
+                            displayName: result.user.displayName,
+                            photoURL: result.user.photoURL,
+                            email: result.user.email,
+                            created: new Date().valueOf(),
+                            role: 'user',
+                            provider: 'facebook'
+                        })
+                    }
+                })
+            }
+        })
     }
 
     return (
