@@ -57,7 +57,7 @@ export default function Navbar() {
               <div className={styles.navLinkText}>Home</div>
             </div>
           </Link>
-          <Link to="/podcast">
+          <Link to="/">
             <div className={styles.navLink}>
               <div className={styles.navLinkIcon}>
                 <FontAwesomeIcon icon={faPodcast} />
@@ -65,7 +65,7 @@ export default function Navbar() {
               <div className={styles.navLinkText}>Podcast</div>
             </div>
           </Link>
-          <Link to="/random">
+          <Link to="/">
             <div className={styles.navLink}>
               <div className={styles.navLinkIcon}>
                 <FontAwesomeIcon icon={faRandom} />
