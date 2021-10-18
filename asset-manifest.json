@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/fangaraidee/static/css/main.70031c28.chunk.css",
-    "main.js": "/fangaraidee/static/js/main.6b1cf40c.chunk.js",
-    "main.js.map": "/fangaraidee/static/js/main.6b1cf40c.chunk.js.map",
+    "main.js": "/fangaraidee/static/js/main.f2e464ba.chunk.js",
+    "main.js.map": "/fangaraidee/static/js/main.f2e464ba.chunk.js.map",
     "runtime-main.js": "/fangaraidee/static/js/runtime-main.690c32db.js",
     "runtime-main.js.map": "/fangaraidee/static/js/runtime-main.690c32db.js.map",
     "static/js/2.26bf6149.chunk.js": "/fangaraidee/static/js/2.26bf6149.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.690c32db.js",
     "static/js/2.26bf6149.chunk.js",
     "static/css/main.70031c28.chunk.css",
-    "static/js/main.6b1cf40c.chunk.js"
+    "static/js/main.f2e464ba.chunk.js"
   ]
 }
