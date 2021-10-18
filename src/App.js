@@ -5,7 +5,6 @@ import Navbar from "./component/Navbar/Navbar";
 import styles from "./App.module.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./component/Home/Home";
-import Test from './component/Test/Home'
 
 function App() {
   const [loading, setLoading] = useState(false);
