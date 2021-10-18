@@ -25,9 +25,6 @@ function App() {
           <Route exact path="/">
             <Home setLoading={setLoading} id="mTdG3yuGbp2GBUNMggMg" />
           </Route>
-          <Route path="/test">
-            <Test setLoading={setLoading} id="IR1X6Fvydxwmhvsfhegz"/>
-          </Route>
         </Switch>
       </div>
     </Router>

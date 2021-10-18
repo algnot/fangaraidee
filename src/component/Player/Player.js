@@ -14,10 +14,12 @@ export default function Player({id}) {
     useEffect( () => {
         const sessionRef = firestore.collection('session').doc(id) 
         sessionRef.onSnapshot((data) => {
+            console.log('data updated');
             setVideoStatus(data.data().videoStatus)
             setVideoTime(data.data().time)
             setVideoTimestamp([data.data().stopTimestamp,data.data().startTimestamp])
         })
+
     })
 
     const userPlay = () => {
@@ -47,7 +49,7 @@ export default function Player({id}) {
         sessionRef.update({
             videoStatus : true,
             startTimestamp : new Date().valueOf(),
-            stopTimestamp : null,
+            stopTimestamp : 0,
         })
     }
 
@@ -73,7 +75,7 @@ export default function Player({id}) {
                     }
                 }}/>
             </div>
-            {/* <div onClick={userPause}>{count}</div> */}
+            <div onClick={userPause}></div>
         </div>
     )
 }

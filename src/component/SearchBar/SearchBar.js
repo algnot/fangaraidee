@@ -9,7 +9,7 @@ export default function Home() {
     <div className={styles.joinRoom}>
       <div className={styles.searchBar}>
         <div className={styles.searchRoom}>
-          <input placeholder="Enter room ID to join." />
+          <input placeholder="Enter session ID to join." />
           <div className={styles.searchIcon}>
             <FontAwesomeIcon icon={faSearch} />
           </div>
